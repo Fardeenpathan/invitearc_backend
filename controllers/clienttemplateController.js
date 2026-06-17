@@ -1,0 +1,529 @@
+import crypto from "crypto";
+import Razorpay from "razorpay";
+import ClientTemplate from "../models/ClientTemplate.js";
+import generateSlug from "../utils/generateslug.js";
+import Template from "../models/Template.js";
+import sendEmail from "../config/sendEmail.js";
+const razorpay = new Razorpay({
+  key_id: process.env.RAZORPAY_KEY_ID,
+  key_secret: process.env.RAZORPAY_KEY_SECRET,
+});
+
+const USD_TO_INR_RATE = 82;
+
+/**
+ * Admin helper to register a new template (like 'hitched') in the system.
+ */
+export const addTemplateToSystem = async (req, res) => {
+  try {
+    const { title, indprice, usaprice, defaultData } = req.body;
+
+    const newTemplate = await Template.create({
+      title,
+      indprice,
+      usaprice,
+      defaultData,
+    });
+
+    res.status(201).json({
+      success: true,
+      message: "New template added to system successfully",
+      data: newTemplate,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+const generateUniqueCode = () => Math.random().toString(36).slice(2, 7);
+const buildClientTemplate = async (user, template) => {
+  const shareSlug = `${generateSlug(template.title)}-${generateUniqueCode()}`;
+  return ClientTemplate.create({
+    userId: user._id,
+    templateId: template._id,
+    customData: template.defaultData,
+    shareSlug,
+    isPublished: false,
+  });
+};
+
+const findExistingPurchase = async (userId, templateId) => {
+  return ClientTemplate.findOne({ userId, templateId });
+};
+
+// ---- /api/client-templates/buy-template  -----
+export const buyTemplate = async (req, res) => {
+  try {
+    const { templateId } = req.body;
+
+    const template = await Template.findById(templateId);
+
+    if (!template) {
+      return res.status(400).json({
+        success: false,
+        message: "Template not found",
+      });
+    }
+
+    // const existingPurchase = await findExistingPurchase(
+    //   req.user._id,
+    //   template._id,
+    // );
+    // if (existingPurchase) {
+    //   return res.status(400).json({
+    //     success: false,
+    //     message: "You have already purchased this template.",
+    //   });
+    // }
+
+    const clientTemplate = await buildClientTemplate(req.user, template);
+
+    res.status(201).json({
+      success: true,
+      message: "Template purchased successfully",
+      data: clientTemplate,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+export const createRazorpayOrder = async (req, res) => {
+  try {
+    const { templateId, country } = req.body;
+    console.log("Country:", country);
+    const template = await Template.findById(templateId);
+
+    if (!template) {
+      return res.status(400).json({
+        success: false,
+        message: "Template not found",
+      });
+    }
+
+    let amount;
+    let currency;
+
+    if (country === "IN") {
+      amount = Math.round(template.indprice * 100);
+      currency = "INR";
+    } else {
+      amount = Math.round(template.usaprice * 100);
+      currency = "USD";
+    }
+    if (amount <= 0) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid template price for Razorpay order.",
+      });
+    }
+
+    // const existingPurchase = await findExistingPurchase(
+    //   req.user._id,
+    //   template._id,
+    // );
+    // if (existingPurchase) {
+    //   return res.status(400).json({
+    //     success: false,
+    //     message: "You have already purchased this template.",
+    //   });
+    // }
+
+    const order = await razorpay.orders.create({
+      amount,
+      // currency: "INR",
+      currency,
+      receipt: `ord_${Date.now()}`,
+      payment_capture: 1,
+    });
+
+    res.json({
+      success: true,
+      data: {
+        orderId: order.id,
+        amount: order.amount,
+        currency: order.currency,
+        key: process.env.RAZORPAY_KEY_ID,
+        templateId,
+      },
+    });
+  } catch (error) {
+    console.error("Razorpay order creation error:", error);
+    res.status(500).json({
+      success: false,
+      message: error.message || "Unable to create Razorpay order.",
+    });
+  }
+};
+
+export const verifyRazorpayPayment = async (req, res) => {
+  try {
+    const {
+      razorpayOrderId,
+      razorpayPaymentId,
+      razorpaySignature,
+      templateId,
+    } = req.body;
+
+    if (
+      !razorpayOrderId ||
+      !razorpayPaymentId ||
+      !razorpaySignature ||
+      !templateId
+    ) {
+      return res.status(400).json({
+        success: false,
+        message: "Missing payment verification fields",
+      });
+    }
+
+    const signature = crypto
+      .createHmac("sha256", process.env.RAZORPAY_KEY_SECRET)
+      .update(`${razorpayOrderId}|${razorpayPaymentId}`)
+      .digest("hex");
+
+    if (signature !== razorpaySignature) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid Razorpay signature",
+      });
+    }
+
+    const template = await Template.findById(templateId);
+    if (!template) {
+      return res.status(400).json({
+        success: false,
+        message: "Template not found",
+      });
+    }
+
+    // const existingPurchase = await findExistingPurchase(
+    //   req.user._id,
+    //   template._id,
+    // );
+    // if (existingPurchase) {
+    //   return res.status(400).json({
+    //     success: false,
+    //     message: "You have already purchased this template.",
+    //   });
+    // }
+
+    const clientTemplate = await buildClientTemplate(req.user, template);
+
+    res.status(201).json({
+      success: true,
+      message: "Payment verified and template purchased successfully",
+      data: clientTemplate,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+//---- /api/client-templates/my-templates -----
+export const getMyTemplates = async (req, res) => {
+  try {
+    const templates = await ClientTemplate.find({
+      userId: req.user._id,
+    })
+      .populate("templateId")
+      .sort({ createdAt: -1 });
+
+    res.json({
+      success: true,
+      data: templates,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+//--- /api/client-templates/:id  ------
+export const getClientTemplateById = async (req, res) => {
+  try {
+    const clientTemplate = await ClientTemplate.findOne({
+      _id: req.params.id,
+      userId: req.user._id,
+    }).populate("templateId");
+
+    if (!clientTemplate) {
+      return res.status(404).json({
+        success: false,
+        message: "Client template not found",
+      });
+    }
+
+    res.json({
+      success: true,
+      data: clientTemplate,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+// PUT---- /api/client-templates/:id/update-text -----
+export const updateTemplateText = async (req, res) => {
+  try {
+    const { field, value } = req.body;
+
+    if (!field) {
+      return res.status(400).json({
+        success: false,
+        message: "Field name is required for update",
+      });
+    }
+
+    const updatedTemplate = await ClientTemplate.findOneAndUpdate(
+      {
+        _id: req.params.id,
+        userId: req.user._id,
+      },
+      {
+        $set: {
+          [`customData.${field}`]: value,
+        },
+      },
+      { new: true },
+    ).populate("templateId");
+
+    if (!updatedTemplate) {
+      return res.status(404).json({
+        success: false,
+        message: "Template not found",
+      });
+    }
+
+    res.json({
+      success: true,
+      message: "Text updated successfully",
+      data: updatedTemplate,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+// PUT ---- /api/client-templates/:id/publish ------
+export const publishTemplate = async (req, res) => {
+  try {
+    const clientTemplate = await ClientTemplate.findOneAndUpdate(
+      {
+        _id: req.params.id,
+        userId: req.user._id,
+      },
+      {
+        isPublished: true,
+      },
+      { new: true },
+    ).populate("templateId");
+
+    if (!clientTemplate) {
+      return res.status(404).json({
+        success: false,
+        message: "Template not found",
+      });
+    }
+
+    res.json({
+      success: true,
+      message: "Template published successfully",
+      shareUrl: `/share/${clientTemplate.shareSlug}`,
+      data: clientTemplate,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+// PUT ---- /api/client-templates/:id/update-share ------
+export const updateShareSlug = async (req, res) => {
+  try {
+    const { prefix } = req.body;
+
+    if (!prefix || prefix.trim() === "") {
+      return res.status(400).json({
+        success: false,
+        message: "Prefix cannot be empty",
+      });
+    }
+
+    const sanitizedPrefix = generateSlug(prefix);
+    const clientTemplate = await ClientTemplate.findById(req.params.id);
+
+    if (!clientTemplate) {
+      return res.status(404).json({
+        success: false,
+        message: "Template not found",
+      });
+    }
+
+    if (clientTemplate.userId.toString() !== req.user._id.toString()) {
+      return res.status(403).json({
+        success: false,
+        message: "Unauthorized to update this template",
+      });
+    }
+
+    // Extract the timestamp suffix from existing slug to maintain uniqueness
+    const currentSlug = clientTemplate.shareSlug;
+    const suffix = currentSlug.split("-").pop();
+    const newSlug = `${sanitizedPrefix}-${suffix}`;
+
+    // Check if new slug is already taken by another user's template
+    const existing = await ClientTemplate.findOne({
+      shareSlug: newSlug,
+      _id: { $ne: clientTemplate._id },
+    });
+
+    if (existing) {
+      return res.status(400).json({
+        success: false,
+        message: "This share link is already taken. Try a different prefix.",
+      });
+    }
+
+    clientTemplate.shareSlug = newSlug;
+    await clientTemplate.save();
+
+    const shareUrl = `${process.env.FRONTEND_URL}/share/${newSlug}`;
+
+    await sendEmail(
+      req.user.email,
+      "🎉 Your Invitation Link is Ready",
+      `
+  <div style="font-family: Arial, sans-serif; max-width:600px; margin:auto;">
+    <h2 style="color:#861E1D;">InviteArc</h2>
+
+    <p>Hello ${req.user.name || ""},</p>
+
+    <p>Your invitation link has been generated successfully.</p>
+
+    <p>
+      <a 
+        href="${shareUrl}"
+        style="
+          background:#861E1D;
+          color:white;
+          padding:12px 20px;
+          text-decoration:none;
+          border-radius:6px;
+          display:inline-block;
+        "
+      >
+        View Invitation
+      </a>
+    </p>
+
+    <p>Or copy this link:</p>
+
+    <p>${shareUrl}</p>
+
+    <hr />
+
+    <p style="color:#666;font-size:13px;">
+      Thank you for choosing InviteArc ❤️
+    </p>
+  </div>
+  `,
+    );
+
+    res.json({
+      success: true,
+      message: "Share link updated successfully",
+      data: clientTemplate,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+//----- /api/client-templates/share -----
+export const shareTemplate = async (req, res) => {
+  try {
+    const clientTemplate = await ClientTemplate.findOne({
+      shareSlug: req.params.slug,
+      isPublished: true,
+    }).populate("templateId");
+
+    if (!clientTemplate) {
+      return res.status(404).json({
+        success: false,
+        message: "shared template not found",
+      });
+    }
+
+    res.json({
+      success: true,
+      message: "Template share successfully",
+      data: clientTemplate,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+export const updateClientTemplate = async (req, res) => {
+  try {
+    const { customData } = req.body;
+
+    const updated = await ClientTemplate.findOneAndUpdate(
+      {
+        _id: req.params.id,
+        userId: req.user._id,
+      },
+      {
+        customData,
+      },
+      {
+        new: true,
+      },
+    ).populate("templateId");
+
+    if (!updated) {
+      return res.status(404).json({
+        success: false,
+        message: "Template not found",
+      });
+    }
+
+    res.json({
+      success: true,
+      data: updated,
+    });
+  } catch (error) {
+    console.error("UPDATE ERROR:", error);
+
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
