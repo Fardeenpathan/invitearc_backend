@@ -124,17 +124,7 @@ export const createRazorpayOrder = async (req, res) => {
       });
     }
 
-    // const existingPurchase = await findExistingPurchase(
-    //   req.user._id,
-    //   template._id,
-    // );
-    // if (existingPurchase) {
-    //   return res.status(400).json({
-    //     success: false,
-    //     message: "You have already purchased this template.",
-    //   });
-    // }
-
+    
     const order = await razorpay.orders.create({
       amount,
       // currency: "INR",
