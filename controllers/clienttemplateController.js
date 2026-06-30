@@ -40,11 +40,12 @@ export const addTemplateToSystem = async (req, res) => {
 
 const generateUniqueCode = () => Math.random().toString(36).slice(2, 7);
 const buildClientTemplate = async (user, template) => {
+   console.log("Template Default Data:", template.defaultData);
   const shareSlug = `${generateSlug(template.title)}-${generateUniqueCode()}`;
   return ClientTemplate.create({
     userId: user._id,
     templateId: template._id,
-    customData: template.defaultData,
+    customData: JSON.parse(JSON.stringify(template.defaultData || {})),
     shareSlug,
     isPublished: false,
   });

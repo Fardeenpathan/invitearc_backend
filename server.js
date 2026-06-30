@@ -6,7 +6,8 @@ import templateRoutes from "./routes/templateRoutes.js";
 import clientTemplateRoutes from "./routes/clienttemplateRoutes.js";
 import authRouter from "./routes/authRoutes.js";
 import cookieParser from "cookie-parser";
-import cors from 'cors';
+import cors from "cors";
+import hitchedDefaultData from "./templateData/hitchedDefaultData.js";
 const app = express();
 
 dotenv.config();
@@ -27,15 +28,9 @@ const seedTemplates = async () => {
       category: "Wedding",
       previewImage: "/assets/preview-images/hitched.png",
       componentKey: "hitched",
-      defaultData: {
-        description:
-          "Love, laughter, and a lifetime together",
-      },
+      defaultData: hitchedDefaultData,
     });
-    console.log("Seeded Hitched template into the database.");
-  } catch (error) {
-    console.error("Failed to seed templates:", error);
-  }
+  } catch (error) {}
 };
 
 const startServer = async () => {
@@ -48,7 +43,7 @@ const startServer = async () => {
       credentials: true,
       methods: ["GET", "POST", "PUT", "DELETE"],
       allowedHeaders: ["Content-Type", "Authorization"],
-    })
+    }),
   );
 
   app.use(express.json());
