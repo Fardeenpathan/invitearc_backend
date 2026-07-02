@@ -3,18 +3,12 @@ const hitchedDefaultData = {
   headline: "INVITES",
   inviteLine: "Request the pleasure of your company",
   eventIntro: "you to join us in the wedding celebrations of",
-
   groomName: "Dhiraj",
   brideName: "Ritika",
-
   groomDetails: "(S/o Mrs. Reena and Mr. Manjit Singh)",
-  brideDetails:
-    "(D/o Mrs. Kalpana Kapoor and Mr. Raj Kapoor)",
-    brideGrandParentsName:
-    "(Granddaughter of Shri J.S. Kapoor)",
-
+  brideDetails: "(D/o Mrs. Kalpana Kapoor and Mr. Raj Kapoor)",
+  brideGrandParentsName: "(Granddaughter of Shri J.S. Kapoor)",
   noteText: "Your presence is the greatest gift to us.",
-
   coupleMessageTitle: "A message from the couple",
   coupleMessageDescription:
     "From different traditions to one beautiful journey, join us as we celebrate love, laughter, and forever. This moment wouldn’t be the same without the people we love most. Thank you for your love, blessings, and for making our journey even more special, we’re so excited to celebrate together!",
@@ -38,9 +32,7 @@ const hitchedDefaultData = {
   marriageCountdownDate: "2026-09-21",
   marriageCountdownDescription:
     "Our families are excited that you are able to join us in celebrating what we hope will be one of the happiest days of our lives.",
-
   whatsappNumber: "+919876543210",
-
   rsvpFields: [
     {
       label: "Full Name",
@@ -55,7 +47,6 @@ const hitchedDefaultData = {
       type: "number",
     },
   ],
-
   events: [
     {
       title_ceremony: "Mehendi",
@@ -78,7 +69,6 @@ const hitchedDefaultData = {
       image: "",
     },
   ],
-
   backgroundMusicUrl: "",
   backgroundMusicFileName: "",
 };
