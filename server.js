@@ -9,6 +9,7 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import hitchedDefaultData from "./templateData/hitchedDefaultData.js";
 const app = express();
+import uploadRoutes from  "./routes/uploadRoutes.js";
 
 dotenv.config();
 
@@ -51,6 +52,7 @@ const startServer = async () => {
   app.use("/api/template", templateRoutes);
   app.use("/api/client-templates", clientTemplateRoutes);
   app.use("/api/auth", authRouter);
+  app.use("/api/upload", uploadRoutes);
 
   app.get("/", (req, res) => {
     res.send("api running");
