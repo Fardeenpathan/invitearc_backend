@@ -458,7 +458,6 @@ export const shareTemplate = async (req, res) => {
   try {
     const clientTemplate = await ClientTemplate.findOne({
       shareSlug: req.params.slug,
-      isPublished: true,
     }).populate("templateId");
 
     if (!clientTemplate) {
