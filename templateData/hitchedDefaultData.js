@@ -1,8 +1,8 @@
 const hitchedDefaultData = {
   familyName: "The Kapoor Family",
   headline: "INVITES",
-  inviteLine: "Request the pleasure of your company",
-  eventIntro: "you to join us in the wedding celebrations of",
+  inviteLine: "you to join us in the wedding celebrations of",
+  eventIntro: "On the following events",
   groomName: "Dhiraj",
   brideName: "Ritika",
   groomDetails: "(S/o Mrs. Reena and Mr. Manjit Singh)",
@@ -51,7 +51,7 @@ const hitchedDefaultData = {
     {
       title_ceremony: "Mehendi",
       date: "10 December 2026",
-      time: "6:00 PM",
+      time: "6:00pm Onwards",
       venue: "Royal Palace",
       venue_address: "Jaipur, Rajasthan",
       theme: "Green Traditional",
@@ -61,7 +61,7 @@ const hitchedDefaultData = {
     {
       title_ceremony: "Wedding",
       date: "12 December 2026",
-      time: "7:30 PM",
+      time: "7:30pm Onwards",
       venue: "Grand Banquet",
       venue_address: "Jaipur, Rajasthan",
       theme: "Royal Red",
