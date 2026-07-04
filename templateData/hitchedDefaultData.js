@@ -71,6 +71,10 @@ const hitchedDefaultData = {
   ],
   backgroundMusicUrl: "",
   backgroundMusicFileName: "",
+  sharePreviewTitle: "Dhiraj & Ritika Wedding Invitation",
+  sharePreviewDescription:
+    "Join us as we celebrate the wedding of Dhiraj and Ritika.",
+  sharePreviewImage: "https://res.cloudinary.com/drl4fmhrq/image/upload/v1783145066/og_n_yisygg.jpg",
 };
 
 export default hitchedDefaultData;
