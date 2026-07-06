@@ -49,7 +49,7 @@ export const register = async (req, res) => {
     res.cookie("refreshToken", refreshToken, {
       httpOnly: true,
       secure: true,
-      sameSite: "strict",
+      sameSite: "none",
       maxAge: 7 * 24 * 60 * 60 * 100,
     });
 
@@ -80,6 +80,8 @@ export const register = async (req, res) => {
 };
 
 export const refreshToken = async (req, res) => {
+  // console.log("Cookies:", req.cookies);
+  // console.log("Refresh Token:", req.cookies.refreshToken);
   const refreshToken = req.cookies.refreshToken;
 
   if (!refreshToken) {
@@ -111,7 +113,7 @@ export const refreshToken = async (req, res) => {
   res.cookie("refreshToken", newRefreshToken, {
     httpOnly: true,
     secure: true,
-    sameSite: "strict",
+    sameSite: "none",
     maxAge: 7 * 24 * 60 * 60 * 1000,
   });
 
@@ -163,7 +165,7 @@ export const login = async (req, res) => {
     res.cookie("refreshToken", refreshToken, {
       httpOnly: true,
       secure: false,
-      sameSite: "strict",
+      sameSite: "none",
       maxAge: 7 * 24 * 60 * 60 * 100,
     });
 
@@ -189,7 +191,7 @@ export const logout = async (req, res) => {
   res.clearCookie("refreshToken", {
     httpOnly: true,
     secure: false,
-    sameSite: "strict",
+    sameSite: "none",
   });
 
   res.status(200).json({
