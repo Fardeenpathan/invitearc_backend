@@ -50,7 +50,7 @@ export const register = async (req, res) => {
       httpOnly: true,
       secure: true,
       sameSite: "none",
-      maxAge: 7 * 24 * 60 * 60 * 100,
+      maxAge: 7 * 24 * 60 * 60 * 1000,
     });
 
     res.status(201).json({
@@ -80,16 +80,17 @@ export const register = async (req, res) => {
 };
 
 export const refreshToken = async (req, res) => {
-  // console.log("Cookies:", req.cookies);
-  // console.log("Refresh Token:", req.cookies.refreshToken);
+  console.log("Cookies:", req.cookies);
   const refreshToken = req.cookies.refreshToken;
-
+console.log("Refresh Token:", req.cookies.refreshToken);
   if (!refreshToken) {
     return res.status(401).json({
       success: false,
       message: "Refresh token not found",
     });
   }
+
+
 
   const decoded = jwt.verify(refreshToken, config.JWT_SECRET);
   const accessToken = jwt.sign(
@@ -166,7 +167,7 @@ export const login = async (req, res) => {
       httpOnly: true,
       secure: false,
       sameSite: "none",
-      maxAge: 7 * 24 * 60 * 60 * 100,
+      maxAge: 7 * 24 * 60 * 60 * 1000,
     });
 
     res.status(200).json({
