@@ -48,8 +48,9 @@ export const register = async (req, res) => {
 
     res.cookie("refreshToken", refreshToken, {
       httpOnly: true,
-      secure: true,
+      secure: process.env.NODE_ENV === "production",
       sameSite: "none",
+      path: "/",
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
 
@@ -82,7 +83,7 @@ export const register = async (req, res) => {
 export const refreshToken = async (req, res) => {
   console.log("Cookies:", req.cookies);
   const refreshToken = req.cookies.refreshToken;
-console.log("Refresh Token:", req.cookies.refreshToken);
+  console.log("Refresh Token:", refreshToken);
   if (!refreshToken) {
     return res.status(401).json({
       success: false,
@@ -90,9 +91,16 @@ console.log("Refresh Token:", req.cookies.refreshToken);
     });
   }
 
+  let decoded;
+  try {
+    decoded = jwt.verify(refreshToken, config.JWT_SECRET);
+  } catch (error) {
+    return res.status(401).json({
+      success: false,
+      message: "Invalid refresh token",
+    });
+  }
 
-
-  const decoded = jwt.verify(refreshToken, config.JWT_SECRET);
   const accessToken = jwt.sign(
     {
       id: decoded.id,
@@ -113,8 +121,9 @@ console.log("Refresh Token:", req.cookies.refreshToken);
 
   res.cookie("refreshToken", newRefreshToken, {
     httpOnly: true,
-    secure: true,
+    secure: process.env.NODE_ENV === "production",
     sameSite: "none",
+    path: "/",
     maxAge: 7 * 24 * 60 * 60 * 1000,
   });
 
@@ -165,8 +174,9 @@ export const login = async (req, res) => {
 
     res.cookie("refreshToken", refreshToken, {
       httpOnly: true,
-      secure: false,
+      secure: process.env.NODE_ENV === "production",
       sameSite: "none",
+      path: "/",
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
 
@@ -191,8 +201,9 @@ export const login = async (req, res) => {
 export const logout = async (req, res) => {
   res.clearCookie("refreshToken", {
     httpOnly: true,
-    secure: false,
+    secure: process.env.NODE_ENV === "production",
     sameSite: "none",
+    path: "/",
   });
 
   res.status(200).json({
