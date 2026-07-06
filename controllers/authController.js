@@ -81,9 +81,8 @@ export const register = async (req, res) => {
 };
 
 export const refreshToken = async (req, res) => {
-  console.log("Cookies:", req.cookies);
   const refreshToken = req.cookies.refreshToken;
-  console.log("Refresh Token:", refreshToken);
+  // console.log("Refresh Token:", refreshToken);
   if (!refreshToken) {
     return res.status(401).json({
       success: false,
@@ -122,7 +121,7 @@ export const refreshToken = async (req, res) => {
   res.cookie("refreshToken", newRefreshToken, {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
-    sameSite: "none",
+    sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
     path: "/",
     maxAge: 7 * 24 * 60 * 60 * 1000,
   });
