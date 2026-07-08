@@ -227,7 +227,7 @@ export const handleForgotPassword = async (req, res) => {
     }
 
     const generatedotp = Math.floor(100000 + Math.random() * 900000);
-    // console.log("otp is ", generatedotp);
+   
 
     const newOtp = new Otp({
       email,
