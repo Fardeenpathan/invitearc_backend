@@ -376,45 +376,45 @@ export const updateShareSlug = async (req, res) => {
 
     const shareUrl = `${process.env.FRONTEND_URL}/share/${newSlug}`;
 
-    await sendEmail(
-      req.user.email,
-      "🎉 Your Invitation Link is Ready",
-      `
-  <div style="font-family: Arial, sans-serif; max-width:600px; margin:auto;">
-    <h2 style="color:#861E1D;">InviteArc</h2>
+  //   await sendEmail(
+  //     req.user.email,
+  //     "🎉 Your Invitation Link is Ready",
+  //     `
+  // <div style="font-family: Arial, sans-serif; max-width:600px; margin:auto;">
+  //   <h2 style="color:#861E1D;">InviteArc</h2>
 
-    <p>Hello ${req.user.name || ""},</p>
+  //   <p>Hello ${req.user.name || ""},</p>
 
-    <p>Your invitation link has been generated successfully.</p>
+  //   <p>Your invitation link has been generated successfully.</p>
 
-    <p>
-      <a 
-        href="${shareUrl}"
-        style="
-          background:#861E1D;
-          color:white;
-          padding:12px 20px;
-          text-decoration:none;
-          border-radius:6px;
-          display:inline-block;
-        "
-      >
-        View Invitation
-      </a>
-    </p>
+  //   <p>
+  //     <a 
+  //       href="${shareUrl}"
+  //       style="
+  //         background:#861E1D;
+  //         color:white;
+  //         padding:12px 20px;
+  //         text-decoration:none;
+  //         border-radius:6px;
+  //         display:inline-block;
+  //       "
+  //     >
+  //       View Invitation
+  //     </a>
+  //   </p>
 
-    <p>Or copy this link:</p>
+  //   <p>Or copy this link:</p>
 
-    <p>${shareUrl}</p>
+  //   <p>${shareUrl}</p>
 
-    <hr />
+  //   <hr />
 
-    <p style="color:#666;font-size:13px;">
-      Thank you for choosing InviteArc ❤️
-    </p>
-  </div>
-  `,
-    );
+  //   <p style="color:#666;font-size:13px;">
+  //     Thank you for choosing InviteArc ❤️
+  //   </p>
+  // </div>
+  // `,
+  //   );
 
     res.json({
       success: true,
