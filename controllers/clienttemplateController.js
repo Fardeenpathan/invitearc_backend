@@ -11,9 +11,8 @@ const razorpay = new Razorpay({
 
 const USD_TO_INR_RATE = 82;
 
-/**
- * Admin helper to register a new template (like 'hitched') in the system.
- */
+//Admin helper to register a new template (like 'hitched') in the system.
+
 export const addTemplateToSystem = async (req, res) => {
   try {
     const { title, indprice, usaprice, defaultData } = req.body;
@@ -40,7 +39,7 @@ export const addTemplateToSystem = async (req, res) => {
 
 const generateUniqueCode = () => Math.random().toString(36).slice(2, 7);
 const buildClientTemplate = async (user, template) => {
-   console.log("Template Default Data:", template.defaultData);
+  console.log("Template Default Data:", template.defaultData);
   const shareSlug = `${generateSlug(template.title)}-${generateUniqueCode()}`;
   return ClientTemplate.create({
     userId: user._id,
@@ -68,17 +67,6 @@ export const buyTemplate = async (req, res) => {
         message: "Template not found",
       });
     }
-
-    // const existingPurchase = await findExistingPurchase(
-    //   req.user._id,
-    //   template._id,
-    // );
-    // if (existingPurchase) {
-    //   return res.status(400).json({
-    //     success: false,
-    //     message: "You have already purchased this template.",
-    //   });
-    // }
 
     const clientTemplate = await buildClientTemplate(req.user, template);
 
@@ -125,7 +113,6 @@ export const createRazorpayOrder = async (req, res) => {
       });
     }
 
-    
     const order = await razorpay.orders.create({
       amount,
       // currency: "INR",
@@ -193,17 +180,6 @@ export const verifyRazorpayPayment = async (req, res) => {
         message: "Template not found",
       });
     }
-
-    // const existingPurchase = await findExistingPurchase(
-    //   req.user._id,
-    //   template._id,
-    // );
-    // if (existingPurchase) {
-    //   return res.status(400).json({
-    //     success: false,
-    //     message: "You have already purchased this template.",
-    //   });
-    // }
 
     const clientTemplate = await buildClientTemplate(req.user, template);
 
