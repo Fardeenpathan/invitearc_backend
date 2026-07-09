@@ -23,7 +23,6 @@ export const protect = async (req, res, next) => {
         message: "User not found",
       });
     }
-
     req.user = user;
 
     next();

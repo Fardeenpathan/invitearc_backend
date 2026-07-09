@@ -4,9 +4,7 @@ import generateSlug from "../utils/generateslug.js";
 export const createTemplate = async(req, res) => {
   try {
     const { title, indprice, usaprice, previewImage, category, componentKey, defaultData } = req.body;
-
     const slug = generateSlug(title);
-
     const template =await Template.create({
       title,
       slug,
