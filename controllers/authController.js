@@ -63,21 +63,45 @@ export const register = async (req, res) => {
       },
       accessToken,
     });
+  // } catch (error) {
+  //   if (error.name === "ValidationError") {
+  //     const firstError = Object.values(error.errors)[0];
+
+  //     return res.status(400).json({
+  //       success: false,
+  //       message: firstError.message,
+  //     });
+  //   }
+
+  //   res.status(500).json({
+  //     success: false,
+  //     message: "Something went wrong",
+  //   });
+  // }
   } catch (error) {
-    if (error.name === "ValidationError") {
-      const firstError = Object.values(error.errors)[0];
+  // console.error("Register Error:", error);
 
-      return res.status(400).json({
-        success: false,
-        message: firstError.message,
-      });
-    }
+  if (error.name === "ValidationError") {
+    const firstError = Object.values(error.errors)[0];
 
-    res.status(500).json({
+    return res.status(400).json({
       success: false,
-      message: "Something went wrong",
+      message: firstError.message,
     });
   }
+
+  if (error.code === 11000) {
+    return res.status(400).json({
+      success: false,
+      message: "Email or Mobile number already exists",
+    });
+  }
+
+  res.status(500).json({
+    success: false,
+    message: error.message,
+  });
+}
 };
 
 export const refreshToken = async (req, res) => {
