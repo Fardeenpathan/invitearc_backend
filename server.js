@@ -8,30 +8,69 @@ import authRouter from "./routes/authRoutes.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import hitchedDefaultData from "./templateData/hitchedDefaultData.js";
+import laavanDefaultData from "./templateData/laavanDefaultData.js";
 const app = express();
-import uploadRoutes from  "./routes/uploadRoutes.js";
+import uploadRoutes from "./routes/uploadRoutes.js";
 
 dotenv.config();
 
+// const seedTemplates = async () => {
+//   try {
+//     const slug = "hitched";
+//     const existing = await Template.findOne({ slug });
+//     if (existing) {
+//       return;
+//     }
+
+//     await Template.create({
+//       title: "Hitched",
+//       slug,
+//       indprice: 2999,
+//       usaprice: 39,
+//       category: "Wedding",
+//       previewImage: "/assets/preview-images/hitched.png",
+//       componentKey: "hitched",
+//       defaultData: hitchedDefaultData,
+//     });
+//   } catch (error) {}
+// };
+
 const seedTemplates = async () => {
   try {
-    const slug = "hitched";
-    const existing = await Template.findOne({ slug });
-    if (existing) {
-      return;
-    }
+    const templates = [
+      {
+        title: "Hitched",
+        slug: "hitched",
+        indprice: 2999,
+        usaprice: 39,
+        category: "Wedding",
+        previewImage: "/assets/preview-images/hitched.png",
+        componentKey: "hitched",
+        defaultData: hitchedDefaultData,
+      },
+      {
+        title: "Laavan",
+        slug: "laavan",
+        indprice: 3999,
+        usaprice: 69,
+        category: "Wedding",
+        previewImage: "/assets/preview-images/laavan.png",
+        componentKey: "laavan",
+        defaultData: laavanDefaultData,
+      },
+    ];
 
-    await Template.create({
-      title: "Hitched",
-      slug,
-      indprice: 2999,
-      usaprice: 39,
-      category: "Wedding",
-      previewImage: "/assets/preview-images/hitched.png",
-      componentKey: "hitched",
-      defaultData: hitchedDefaultData,
-    });
-  } catch (error) {}
+    for (const template of templates) {
+      const existing = await Template.findOne({ slug: template.slug });
+
+      if (!existing) {
+        await Template.create(template);
+        console.log(`✅ ${template.title} template seeded`);
+      }
+    }
+  } catch (error) {
+    console.error("Seed templates error:", error);
+  }
 };
 
 const startServer = async () => {

@@ -10,8 +10,7 @@ const hitchedDefaultData = {
   brideGrandParentsName: "(Granddaughter of Shri J.S. Kapoor)",
   noteText: "Your presence is the greatest gift to us.",
   coupleMessageTitle: "Introducing",
-  coupleMessageDescription:
-    "The Couple",
+  coupleMessageDescription: "The Couple",
   coupleMessageThingsToKnowTitle: "A Guide for Guests",
   coupleMessageThingsToKnowDescription:
     "To help you feel at ease and enjoy every moment of the celebrations, we’ve gathered a few thoughtful details we’d love for you to know before the big day.",
@@ -36,7 +35,7 @@ const hitchedDefaultData = {
   rsvpFields: [
     {
       label: "Full Name",
-      type: "text",
+      type: "text", 
     },
     {
       label: "Phone Number",
@@ -53,22 +52,26 @@ const hitchedDefaultData = {
       date: "Saturday, 10th December 2026",
       time: "6pm Onwards",
       venue: "Royal Palace",
-      venue_address: "Bund Garden Road, Agarkar Nagar Pune, Maharashtra, 411001",
+      venue_address:
+        "Bund Garden Road, Agarkar Nagar Pune, Maharashtra, 411001",
       theme: "Pretty in Pink: Florals, Pastels & Pink Hues",
       link: "https://maps.app.goo.gl/WkMi2oVcYqnb3VeS6",
-      image: "https://res.cloudinary.com/drl4fmhrq/image/upload/v1783491394/Group_2147225694_wk25w5.png",
+      image:
+        "https://res.cloudinary.com/drl4fmhrq/image/upload/v1783491394/Group_2147225694_wk25w5.png",
     },
     {
       title_ceremony: "Wedding",
       date: "12th December 2026",
       time: "7:30pm Onwards",
       venue: "Grand Banquet",
-      venue_address: "Bund Garden Road, Agarkar Nagar Pune, Maharashtra, 411001",
+      venue_address:
+        "Bund Garden Road, Agarkar Nagar Pune, Maharashtra, 411001",
       theme: "Glitz & Glam: Shimmer, sequins & Statement Fits",
       link: "https://maps.app.goo.gl/WkMi2oVcYqnb3VeS6",
-      image: "https://res.cloudinary.com/drl4fmhrq/image/upload/v1783490546/Group_2147225087_hyxljf.png",
+      image:
+        "https://res.cloudinary.com/drl4fmhrq/image/upload/v1783490546/Group_2147225087_hyxljf.png",
     },
-     {
+    {
       title_ceremony: "Reception",
       date: "14th December 2026",
       time: "7:30pm Onwards",
@@ -76,7 +79,8 @@ const hitchedDefaultData = {
       venue_address: "Mahipalpur Village, Mahipalpur, New Delhi, Delhi 110076",
       theme: "Timeless Royalty: Elegant Ethnic & Royal Silhouettes",
       link: "https://maps.app.goo.gl/WkMi2oVcYqnb3VeS6",
-      image: "https://res.cloudinary.com/drl4fmhrq/image/upload/v1783490546/Group_2147225693_vp9xck.png",
+      image:
+        "https://res.cloudinary.com/drl4fmhrq/image/upload/v1783490546/Group_2147225693_vp9xck.png",
     },
   ],
   backgroundMusicUrl: "",
@@ -84,7 +88,8 @@ const hitchedDefaultData = {
   sharePreviewTitle: "Dhiraj & Ritika Wedding Invitation",
   sharePreviewDescription:
     "Join us as we celebrate the wedding of Dhiraj and Ritika.",
-  sharePreviewImage: "https://res.cloudinary.com/drl4fmhrq/image/upload/v1783145066/og_n_yisygg.jpg",
+  sharePreviewImage:
+    "https://res.cloudinary.com/drl4fmhrq/image/upload/v1783145066/og_n_yisygg.jpg",
 };
 
 export default hitchedDefaultData;
