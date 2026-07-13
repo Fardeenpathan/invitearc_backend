@@ -1,35 +1,24 @@
 const laavanDefaultData = {
   groomName: "Harpreet",
   brideName: "Ritika",
-  greetingText: "ਪ੍ਰੀਤ ਸਹਿਤ ਆਪ ਸਭਦਾ ਜੀ ਆਇਆਂ ਨੂੰ...",
+  religiousMantra: "ਪ੍ਰੀਤ ਸਹਿਤ ਆਪ ਸਭਦਾ ਜੀ ਆਇਆਂ ਨੂੰ...",
   blessingMessage: "With the heavenly blessings of Our late grandparents, ",
-  grandparents:"Sdn. Gurmeet Kapoor and Sd. Maninder Singh",
+  brideGrandParentsName:"Sdn. Gurmeet Kapoor and Sd. Maninder Singh",
   familyName: "The Kapoor Family",
   headline: "INVITES",
   inviteLine: "you to join us in the wedding celebrations of",
-  groomParents: "Dharmender Singh and Jaya Kaur",
-  brideParents: "Manak Kapoor and Rani Kapoor",
+  groomDetails: "(Son of Dharmender Singh and Jaya Kaur)",
+  brideDetails: "(Daughter of Manak Kapoor and Rani Kapoor)",
   eventIntro: "On the following events",
   thankyoutitle: "With Love From Us",
   thankyoumessage:
     "Thank you for being part our journey. Your presence makes this celebration truly meaningful, and we look forward to sharing these cherished moments with you.",
   coupleMessageTitle: "Introducing",
   coupleMessageDescription: "The Couple",
-  // coupleMessageCarouselImages: {
-  //   image1:
-  //     "https://res.cloudinary.com/drl4fmhrq/image/upload/v1783491394/Group_2147225694_wk25w5.png",
-  //   image2:
-  //     "https://res.cloudinary.com/drl4fmhrq/image/upload/v1783491394/Group_2147225694_wk25w5.png",
-  //   image3:
-  //     "https://res.cloudinary.com/drl4fmhrq/image/upload/v1783491394/Group_2147225694_wk25w5.png",
-  //   image4:
-  //     "https://res.cloudinary.com/drl4fmhrq/image/upload/v1783491394/Group_2147225694_wk25w5.png",
-  // },
-
   coupleMessageThingsToKnowTitle: "A Guide for Guests",
-  coupleMessageStaffTitle: "Location",
+  coupleMessageStaffTitle: "Staff",
   coupleMessageStaffDetails:
-    "The Central Park Hotel\nBund Garden Road,\nAgarkar Nagar, Pune,\nMaharashtra, 411001",
+    "for those traveling from far, Royal Orchid Suites offers a comfortable stay nearby.",
   coupleMessageWeatherTitle: "Weather",
   coupleMessageWeatherDetails:
     "Clouds may drop by uninvited, but so will great vibes and better dance moves. A little rain never stopped a good celebration anyway.",
@@ -38,8 +27,8 @@ const laavanDefaultData = {
     "Valet parking for all our guests will be available at the venue.",
   coupleMessageThingsToKnowDescription:
     "Your presence means the world to us. To make your experience effortless and enjoyable, we've gathered a few useful details below.",
-  coupleMessageClosingTitle: "See You Soon ❤️",
-  coupleMessageRsvpText: "Click on the Whatsapp icon to RSVP",
+  coupleMessageClosingTitle: "Awaiting the Pleasure of Your Company",
+  coupleMessageRsvpText: "Share Your RSVP",
   rsvpMode: "whatsapp",
  
   Logo: "",
@@ -104,11 +93,20 @@ const laavanDefaultData = {
     },
   ],
 
+
+  coupleMessageImages: {
+  image1: "",
+  image2: "",
+  image3: "",
+  image4: "",
+  image5: "",
+},
+
   backgroundMusicUrl: "",
   backgroundMusicFileName: "",
-  sharePreviewTitle: "Dhiraj & Ritika Wedding Invitation",
+  sharePreviewTitle: "Harpreet & Ritika Wedding Invitation",
   sharePreviewDescription:
-    "Join us as we celebrate the wedding of Dhiraj and Ritika.",
+    "Join us as we celebrate the wedding of Harpreet and Ritika.",
   sharePreviewImage:
     "https://res.cloudinary.com/drl4fmhrq/image/upload/v1783145066/og_n_yisygg.jpg",
 };

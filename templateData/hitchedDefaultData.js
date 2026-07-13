@@ -8,6 +8,7 @@ const hitchedDefaultData = {
   groomDetails: "(S/o Mrs. Reena and Mr. Manjit Singh)",
   brideDetails: "(D/o Mrs. Kalpana Kapoor and Mr. Raj Kapoor)",
   brideGrandParentsName: "(Granddaughter of Shri J.S. Kapoor)",
+  blessingMessage: "With the heavenly blessings of",
   noteText: "Your presence is the greatest gift to us.",
   coupleMessageTitle: "Introducing",
   coupleMessageDescription: "The Couple",
@@ -32,20 +33,20 @@ const hitchedDefaultData = {
   marriageCountdownDescription:
     "Surrounded by family and friends, we can't wait to celebrate this beautiful moment with you.",
   whatsappNumber: "+919876543210",
-  rsvpFields: [
-    {
-      label: "Full Name",
-      type: "text", 
-    },
-    {
-      label: "Phone Number",
-      type: "tel",
-    },
-    {
-      label: "Number of Guests",
-      type: "number",
-    },
-  ],
+  // rsvpFields: [
+  //   {
+  //     label: "Full Name",
+  //     type: "text", 
+  //   },
+  //   {
+  //     label: "Phone Number",
+  //     type: "tel",
+  //   },
+  //   {
+  //     label: "Number of Guests",
+  //     type: "number",
+  //   },
+  // ],
   events: [
     {
       title_ceremony: "Mehendi",
