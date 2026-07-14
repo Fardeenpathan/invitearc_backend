@@ -40,7 +40,7 @@ const laavanDefaultData = {
     {
       title_ceremony: "Mehendi",
       image:
-        "https://res.cloudinary.com/drl4fmhrq/image/upload/v1783491394/Group_2147225694_wk25w5.png",
+        "https://res.cloudinary.com/drl4fmhrq/image/upload/v1784019560/Mehendi.0unymuat5qrsi_qe9yde.webp",
       date: "Saturday, 20th June 2026",
       venue: "THE ASHOK HOTEL",
       venue_address:
@@ -52,7 +52,7 @@ const laavanDefaultData = {
     {
       title_ceremony: "Anand Karaj",
       image:
-        "https://res.cloudinary.com/drl4fmhrq/image/upload/v1783491394/Group_2147225694_wk25w5.png",
+        "https://res.cloudinary.com/drl4fmhrq/image/upload/v1784019561/Anand_Karaj.0h6ij._hxm01t_zjuih3.webp",
       date: "Saturday, 20th June 2026",
       venue: "The Central Park Hotel",
       venue_address:
@@ -64,7 +64,7 @@ const laavanDefaultData = {
     {
       title_ceremony: "Reception",
       image:
-        "https://res.cloudinary.com/drl4fmhrq/image/upload/v1783491394/Group_2147225694_wk25w5.png",
+        "https://res.cloudinary.com/drl4fmhrq/image/upload/v1784019560/Reception.0rewfna44nzau_dul8it.webp",
       date: "Sunday, 21st June 2026",
       venue: "The Central Park Hotel",
       venue_address:

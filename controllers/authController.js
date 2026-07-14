@@ -63,21 +63,7 @@ export const register = async (req, res) => {
       },
       accessToken,
     });
-  // } catch (error) {
-  //   if (error.name === "ValidationError") {
-  //     const firstError = Object.values(error.errors)[0];
 
-  //     return res.status(400).json({
-  //       success: false,
-  //       message: firstError.message,
-  //     });
-  //   }
-
-  //   res.status(500).json({
-  //     success: false,
-  //     message: "Something went wrong",
-  //   });
-  // }
   } catch (error) {
   // console.error("Register Error:", error);
 

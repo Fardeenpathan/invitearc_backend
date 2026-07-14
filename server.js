@@ -14,27 +14,6 @@ import uploadRoutes from "./routes/uploadRoutes.js";
 
 dotenv.config();
 
-// const seedTemplates = async () => {
-//   try {
-//     const slug = "hitched";
-//     const existing = await Template.findOne({ slug });
-//     if (existing) {
-//       return;
-//     }
-
-//     await Template.create({
-//       title: "Hitched",
-//       slug,
-//       indprice: 2999,
-//       usaprice: 39,
-//       category: "Wedding",
-//       previewImage: "/assets/preview-images/hitched.png",
-//       componentKey: "hitched",
-//       defaultData: hitchedDefaultData,
-//     });
-//   } catch (error) {}
-// };
-
 const seedTemplates = async () => {
   try {
     const templates = [
