@@ -76,7 +76,6 @@ const laavanDefaultData = {
   ],
 
 
-
   whatsappNumber: "+919876543210",
   rsvpFields: [
     {
