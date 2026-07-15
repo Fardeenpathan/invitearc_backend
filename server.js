@@ -9,6 +9,7 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import hitchedDefaultData from "./templateData/hitchedDefaultData.js";
 import laavanDefaultData from "./templateData/laavanDefaultData.js";
+import mayraDefaultData from "./templateData/mayraDefaultData.js";
 const app = express();
 import uploadRoutes from "./routes/uploadRoutes.js";
 
@@ -22,7 +23,7 @@ const seedTemplates = async () => {
         slug: "hitched",
         indprice: 2999,
         usaprice: 39,
-        category: "Wedding",
+        category: "Hindu Weddings",
         previewImage: "/assets/preview-images/hitched.png",
         componentKey: "hitched",
         defaultData: hitchedDefaultData,
@@ -32,10 +33,20 @@ const seedTemplates = async () => {
         slug: "laavan",
         indprice: 3999,
         usaprice: 69,
-        category: "Wedding",
+        category: "Sikh Weddings",
         previewImage: "/assets/preview-images/laavan.png",
         componentKey: "laavan",
         defaultData: laavanDefaultData,
+      },
+      {
+        title: "Mayra",
+        slug: "mayra",
+        indprice: 4999,
+        usaprice: 59,
+        category: "Hindu Weddings",
+        previewImage: "/assets/preview-images/mayra.png",
+        componentKey: "mayra",
+        defaultData: mayraDefaultData,
       },
     ];
 
