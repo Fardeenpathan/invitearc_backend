@@ -1,12 +1,12 @@
 const mayraDefaultData = {
   groomName: "VEERENDRA",
   brideName: "MEERA",
-  religiousMantra:"ॐ श्री गणेशाय नम",
-  groomDetails:"(Grandson of Mrs. Kanta & Mr. Kamal Bhawnani)\n(Son of Mrs. Kanchan & Mr. Sanjay Bhawnani)",
+  religiousMantra: "ॐ श्री गणेशाय नम",
+  groomDetails: "(Son of Mrs. Kanchan & Mr. Sanjay Bhawnani)",
   blessingMessage: "With the heavenly blessings of",
   brideGrandParentsName: "Shri Rajesh Gaur & Shrimati Sunita Gaur",
   brideDetails: "(Daughter of Mrs. Sarita & Mr. Pradeep Jain)",
-   thankyoutitle: "With Love From Us",
+  thankyoutitle: "With Love From Us",
   thankyoumessage:
     "Thank you for being part our journey. Your presence makes this celebration truly meaningful, and we look forward to sharing these cherished moments with you.",
   eventIntro: "On the following events",
@@ -15,7 +15,7 @@ const mayraDefaultData = {
   coupleMessageTitle: "Introducing",
   coupleMessageDescription: "The Couple",
   coupleMessageThingsToKnowTitle: "A Guide for Guests",
-coupleMessageStaffTitle: "Staff",
+  coupleMessageStaffTitle: "Staff",
   coupleMessageStaffDetails:
     "for those traveling from far, Royal Orchid Suites offers a comfortable stay nearby.",
   coupleMessageWeatherTitle: "Weather",
@@ -29,16 +29,17 @@ coupleMessageStaffTitle: "Staff",
   coupleMessageClosingTitle: "Awaiting the Pleasure of Your Company",
   coupleMessageRsvpText: "Share Your RSVP",
   rsvpMode: "whatsapp",
-  
   Logo: "",
   marriageCountdownTitle: "The Journey Begins",
   marriageCountdownDate: "2026-09-21",
-  marriageCountdownDescription: "Surrounded by family and friends, we can't wait to celebrate this beautiful moment with you.",
+  marriageCountdownDescription:
+    "Surrounded by family and friends, we can't wait to celebrate this beautiful moment with you.",
 
   events: [
     {
       title_ceremony: "Mehendi",
-      //   image: assets.mehandi,
+      image:
+        "https://res.cloudinary.com/drl4fmhrq/image/upload/v1784265958/mehendi.0bb9d.x_0spx9_xv38gb.webp",
       date: "Saturday, 20th June 2026",
       venue: "THE ASHOK HOTEL",
       venue_address:
@@ -50,7 +51,8 @@ coupleMessageStaffTitle: "Staff",
 
     {
       title_ceremony: "Shaadi",
-      //   image: assets.shaadi,
+      image:
+        "https://res.cloudinary.com/drl4fmhrq/image/upload/v1784265958/shaadi.104fy-f1z41ha_jpzbp3.webp",
       date: "Saturday, 20th June 2026",
       venue: "The Central Park Hotel",
       venue_address:
@@ -62,7 +64,8 @@ coupleMessageStaffTitle: "Staff",
 
     {
       title_ceremony: "Reception",
-      //   image: assets.reception,
+      image:
+        "https://res.cloudinary.com/drl4fmhrq/image/upload/v1784265958/reception.0poph3iel8f0a_gkxfpy.webp",
       date: "Sunday, 21st June 2026",
       venue: "The Central Park Hotel",
       venue_address:
@@ -75,9 +78,9 @@ coupleMessageStaffTitle: "Staff",
 
   backgroundMusicUrl: "",
   backgroundMusicFileName: "",
-  sharePreviewTitle: "Harpreet & Ritika Wedding Invitation",
+  sharePreviewTitle: "VEERENDRA & MEERA Wedding Invitation",
   sharePreviewDescription:
-    "Join us as we celebrate the wedding of Harpreet and Ritika.",
+    "Join us as we celebrate the wedding of VEERENDRA and MEERA.",
   sharePreviewImage:
     "https://res.cloudinary.com/drl4fmhrq/image/upload/v1783145066/og_n_yisygg.jpg",
 };
