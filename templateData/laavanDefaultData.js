@@ -30,7 +30,6 @@ const laavanDefaultData = {
   coupleMessageClosingTitle: "Awaiting the Pleasure of Your Company",
   coupleMessageRsvpText: "Share Your RSVP",
   rsvpMode: "whatsapp",
- 
   Logo: "",
   marriageCountdownTitle: "The Journey Begins",
   marriageCountdownDate: "2026-09-21",
