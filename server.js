@@ -12,6 +12,7 @@ import laavanDefaultData from "./templateData/laavanDefaultData.js";
 import mayraDefaultData from "./templateData/mayraDefaultData.js";
 const app = express();
 import uploadRoutes from "./routes/uploadRoutes.js";
+import kalyanamDefaultData from "./templateData/kalyanamDefaultData.js";
 
 dotenv.config();
 
@@ -47,6 +48,16 @@ const seedTemplates = async () => {
         previewImage: "/assets/preview-images/mayra.png",
         componentKey: "mayra",
         defaultData: mayraDefaultData,
+      },
+       {
+        title: "Kalyanam",
+        slug: "kalyanam",
+        indprice: 5999,
+        usaprice: 49,
+        category: "South-Indian Weddings",
+        previewImage: "/assets/preview-images/kalyanam.jpg",
+        componentKey: "kalyanam",
+        defaultData: kalyanamDefaultData,
       },
     ];
 
