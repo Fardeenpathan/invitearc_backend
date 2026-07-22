@@ -13,6 +13,8 @@ import mayraDefaultData from "./templateData/mayraDefaultData.js";
 const app = express();
 import uploadRoutes from "./routes/uploadRoutes.js";
 import kalyanamDefaultData from "./templateData/kalyanamDefaultData.js";
+import niqahDefaultData from "./templateData/niqahDefaultData.js";
+import vowsDefaultData from "./templateData/vowsDefaultData.js";
 
 dotenv.config();
 
@@ -58,6 +60,26 @@ const seedTemplates = async () => {
         previewImage: "/assets/preview-images/kalyanam.jpg",
         componentKey: "kalyanam",
         defaultData: kalyanamDefaultData,
+      },
+       {
+        title: "Niqah",
+        slug: "niqah",
+        indprice: 3499,
+        usaprice: 46,
+        category: "Muslim Weddings",
+        previewImage: "/assets/preview-images/niqah.jpg",
+        componentKey: "niqah",
+        defaultData: niqahDefaultData,
+      },
+        {
+        title: "Vows",
+        slug: "vows",
+        indprice: 3299,
+        usaprice: 53,
+        category: "Christian Weddings",
+        previewImage: "/assets/preview-images/vows.jpg",
+        componentKey: "vows",
+        defaultData: vowsDefaultData,
       },
     ];
 
