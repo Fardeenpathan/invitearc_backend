@@ -35,8 +35,6 @@ const vowsDefaultData = {
   marriageCountdownDescription:
     "Surrounded by family and friends, we can't wait to celebrate this beautiful moment with you.",
 
-
-
   events: [
      {
       title_ceremony: "Prayer Service",
@@ -73,7 +71,6 @@ const vowsDefaultData = {
       theme: "Glitz & Glam: Shimmer, sequins & Statement Fits",
       link: "https://maps.app.goo.gl/mxcwCxWhH1TXBC8c9",
     },
-
   ],
 
 backgroundMusicUrl: "",

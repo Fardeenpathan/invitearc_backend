@@ -70,7 +70,6 @@ const kalyanamDefaultData = {
     },
   ],
 
-
 backgroundMusicUrl: "",
   backgroundMusicFileName: "",
   sharePreviewTitle: "AARAV & ANANYA Wedding Invitation",
