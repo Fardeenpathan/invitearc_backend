@@ -69,13 +69,6 @@ const kalyanamDefaultData = {
       link: "https://maps.app.goo.gl/f599YkTSEYKDEK5L7",
     },
   ],
-//    coupleMessageImages: {
-//   image1: "",
-//   image2: "",
-//   image3: "",
-//   image4: "",
-//   image5: "",
-// },
 
 
 backgroundMusicUrl: "",
