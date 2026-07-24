@@ -8,7 +8,6 @@ import sendEmail from "../config/sendEmail.js";
 export const register = async (req, res) => {
   try {
     const { name, email, mobileNumber, password } = req.body;
-
     const existUser = await User.findOne({ email, mobileNumber });
 
     if (existUser) {
