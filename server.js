@@ -9,6 +9,7 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import hitchedDefaultData from "./templateData/hitchedDefaultData.js";
 import laavanDefaultData from "./templateData/laavanDefaultData.js";
+import starlightDefaultData from "./templateData/starlightDefaultData.js";
 import mayraDefaultData from "./templateData/mayraDefaultData.js";
 const app = express();
 import uploadRoutes from "./routes/uploadRoutes.js";
@@ -27,7 +28,7 @@ const seedTemplates = async () => {
         indprice: 2999,
         usaprice: 39,
         category: "Hindu Weddings",
-        previewImage: "/assets/preview-images/hitched.png",
+        previewImage: "/assets/preview-images/hitched.webp",
         componentKey: "hitched",
         defaultData: hitchedDefaultData,
       },
@@ -37,9 +38,19 @@ const seedTemplates = async () => {
         indprice: 3999,
         usaprice: 69,
         category: "Sikh Weddings",
-        previewImage: "/assets/preview-images/laavan.png",
+        previewImage: "/assets/preview-images/laavan.webp",
         componentKey: "laavan",
         defaultData: laavanDefaultData,
+      },
+       {
+        title: "Starlight",
+        slug: "starlight",
+        indprice: 3999,
+        usaprice: 69,
+        category: "Sikh Weddings",
+        previewImage: "/assets/preview-images/starlight.webp",
+        componentKey: "starlight",
+        defaultData: starlightDefaultData,
       },
       {
         title: "Mayra",
@@ -47,7 +58,7 @@ const seedTemplates = async () => {
         indprice: 4999,
         usaprice: 59,
         category: "Hindu Weddings",
-        previewImage: "/assets/preview-images/mayra.png",
+        previewImage: "/assets/preview-images/mayra.webp",
         componentKey: "mayra",
         defaultData: mayraDefaultData,
       },
@@ -57,7 +68,7 @@ const seedTemplates = async () => {
         indprice: 5999,
         usaprice: 49,
         category: "South-Indian Weddings",
-        previewImage: "/assets/preview-images/kalyanam.jpg",
+        previewImage: "/assets/preview-images/kalyanam.webp",
         componentKey: "kalyanam",
         defaultData: kalyanamDefaultData,
       },
@@ -67,7 +78,7 @@ const seedTemplates = async () => {
         indprice: 3499,
         usaprice: 46,
         category: "Muslim Weddings",
-        previewImage: "/assets/preview-images/niqah.jpg",
+        previewImage: "/assets/preview-images/niqah.webp",
         componentKey: "niqah",
         defaultData: niqahDefaultData,
       },
@@ -77,7 +88,7 @@ const seedTemplates = async () => {
         indprice: 3299,
         usaprice: 53,
         category: "Christian Weddings",
-        previewImage: "/assets/preview-images/vows.jpg",
+        previewImage: "/assets/preview-images/vows.webp",
         componentKey: "vows",
         defaultData: vowsDefaultData,
       },
