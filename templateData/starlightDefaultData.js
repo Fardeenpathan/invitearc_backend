@@ -36,11 +36,10 @@ brideGrandParentsName: "Sdn. Parkash Kapoor and Sd. Avtar Singh.",
   whatsappNumber: "919876543210",
   Logo: "",
 
-
-  events: [
+ events: [
     {
       title_ceremony: "Mehendi",
-    //   image: assets.mehendi,
+      // image: assets.mehendi,
       venue: "The Central Park Hotel",
       venue_address:
         "Bund Garden Road, Agarkar Nagar\nPune, Maharashtra, 411001",
@@ -49,10 +48,9 @@ brideGrandParentsName: "Sdn. Parkash Kapoor and Sd. Avtar Singh.",
       link: "https://maps.app.goo.gl/53z68ksx4cYgoNm59",
     },
 
-
     {
       title_ceremony: "Anand Karaj",
-    //   image: assets.anand_karaj,
+      // image: assets.anand_karaj,
       venue: "The Central Park Hotel",
       venue_address:
         "Bund Garden Road, Agarkar Nagar\nPune, Maharashtra, 411001",
@@ -63,7 +61,7 @@ brideGrandParentsName: "Sdn. Parkash Kapoor and Sd. Avtar Singh.",
 
     {
       title_ceremony: "Reception",
-    //   image: assets.reception,
+      // image: assets.reception,
       venue: "The Central Park Hotel",
       venue_address:
         "Bund Garden Road, Agarkar Nagar\nPune, Maharashtra, 411001",
@@ -72,10 +70,7 @@ brideGrandParentsName: "Sdn. Parkash Kapoor and Sd. Avtar Singh.",
       link: "https://maps.app.goo.gl/f599YkTSEYKDEK5L7",
     },
 
-
   ],
-
-
 
 }
 
