@@ -82,8 +82,6 @@ backgroundMusicUrl: "",
     "Join us as we celebrate the wedding of Harpreet and Ritika.",
   sharePreviewImage:
     "https://res.cloudinary.com/drl4fmhrq/image/upload/v1783145066/og_n_yisygg.jpg",
-
-
 }
 
 export default starlightDefaultData;
