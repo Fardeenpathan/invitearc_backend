@@ -29,20 +29,23 @@ brideGrandParentsName: "Sdn. Parkash Kapoor and Sd. Avtar Singh.",
   coupleMessageThingsToKnowDescription:
     "Your presence means the world to us. To make your experience effortless and enjoyable, we've gathered a few useful details below.",
   coupleMessageClosingTitle: "Awaiting the Pleasure of Your Company",
-  coupleMessageRsvpText: "Click on the Whatsapp icon to RSVP",
+  coupleMessageRsvpText: "Click the link to RSVP",
   rsvpMode: "whatsapp",
-  rsvpWhatsappButtonText: "Click on the Whatsapp icon to RSVP",
+  rsvpWhatsappButtonText: "Click the link to RSVP",
   rsvpFormButtonText: "Fill RSVP Form",
   whatsappNumber: "919876543210",
   Logo: "",
+  marriageCountdownTitle: "The Journey Begins",
+  marriageCountdownDate: "2026-09-21",
+  marriageCountdownDescription:
+    "Surrounded by family and friends, we can't wait to celebrate this beautiful moment with you.",
 
  events: [
     {
       title_ceremony: "Mehendi",
-      // image: assets.mehendi,
+      image: "https://res.cloudinary.com/drl4fmhrq/image/upload/v1785129487/Mehendi.0muqg_17yar6f_ssqfa2.webp",
       venue: "The Central Park Hotel",
-      venue_address:
-        "Bund Garden Road, Agarkar Nagar\nPune, Maharashtra, 411001",
+      venue_address: "Bund Garden Road, Agarkar Nagar\nPune, Maharashtra, 411001",
       time: "8pm Onwards",
       theme: "Glitz & Glam: Shimmer, sequins & Statement Fits",
       link: "https://maps.app.goo.gl/53z68ksx4cYgoNm59",
@@ -50,7 +53,7 @@ brideGrandParentsName: "Sdn. Parkash Kapoor and Sd. Avtar Singh.",
 
     {
       title_ceremony: "Anand Karaj",
-      // image: assets.anand_karaj,
+      image: "https://res.cloudinary.com/drl4fmhrq/image/upload/v1785129489/Anand_Karaj.11mb4ldy_4ra2_pzuz3j.webp",
       venue: "The Central Park Hotel",
       venue_address:
         "Bund Garden Road, Agarkar Nagar\nPune, Maharashtra, 411001",
@@ -61,7 +64,7 @@ brideGrandParentsName: "Sdn. Parkash Kapoor and Sd. Avtar Singh.",
 
     {
       title_ceremony: "Reception",
-      // image: assets.reception,
+      image: "https://res.cloudinary.com/drl4fmhrq/image/upload/v1785129488/Reception.0_p-k3y3ocxyo_i79mre.webp",
       venue: "The Central Park Hotel",
       venue_address:
         "Bund Garden Road, Agarkar Nagar\nPune, Maharashtra, 411001",
@@ -71,6 +74,15 @@ brideGrandParentsName: "Sdn. Parkash Kapoor and Sd. Avtar Singh.",
     },
 
   ],
+
+backgroundMusicUrl: "",
+  backgroundMusicFileName: "",
+  sharePreviewTitle: "Harpreet & Ritika Wedding Invitation",
+  sharePreviewDescription:
+    "Join us as we celebrate the wedding of Harpreet and Ritika.",
+  sharePreviewImage:
+    "https://res.cloudinary.com/drl4fmhrq/image/upload/v1783145066/og_n_yisygg.jpg",
+
 
 }
 
