@@ -16,6 +16,7 @@ import uploadRoutes from "./routes/uploadRoutes.js";
 import kalyanamDefaultData from "./templateData/kalyanamDefaultData.js";
 import niqahDefaultData from "./templateData/niqahDefaultData.js";
 import vowsDefaultData from "./templateData/vowsDefaultData.js";
+import sohalaDefaultData from "./templateData/sohalaDefaultData.js";
 
 dotenv.config();
 
@@ -31,6 +32,16 @@ const seedTemplates = async () => {
         previewImage: "/assets/preview-images/hitched.webp",
         componentKey: "hitched",
         defaultData: hitchedDefaultData,
+      },
+      {
+        title: "Sohala",
+        slug: "sohala",
+        indprice: 3599,
+        usaprice: 41,
+        category: "Hindu Weddings",
+        previewImage: "/assets/preview-images/sohala.webp",
+        componentKey: "sohala",
+        defaultData: sohalaDefaultData,
       },
       {
         title: "Laavan",
