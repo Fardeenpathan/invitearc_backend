@@ -81,7 +81,6 @@ backgroundMusicUrl: "",
   sharePreviewImage:
     "https://res.cloudinary.com/drl4fmhrq/image/upload/v1783145066/og_n_yisygg.jpg",
 
-
 }
 
 export default vowsDefaultData;

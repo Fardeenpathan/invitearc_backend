@@ -46,7 +46,6 @@ coupleMessageClosingTitle: "Awaiting the Pleasure of Your Company",
   
 },
 
-
   events: [
     {
       title_ceremony: "Mehendi",
