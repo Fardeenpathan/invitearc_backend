@@ -8,6 +8,7 @@ import authRouter from "./routes/authRoutes.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import hitchedDefaultData from "./templateData/hitchedDefaultData.js";
+import auraDefaultData from "./templateData/auraDefaultData.js";
 import laavanDefaultData from "./templateData/laavanDefaultData.js";
 import starlightDefaultData from "./templateData/starlightDefaultData.js";
 import mayraDefaultData from "./templateData/mayraDefaultData.js";
@@ -16,6 +17,7 @@ import uploadRoutes from "./routes/uploadRoutes.js";
 import kalyanamDefaultData from "./templateData/kalyanamDefaultData.js";
 import niqahDefaultData from "./templateData/niqahDefaultData.js";
 import vowsDefaultData from "./templateData/vowsDefaultData.js";
+import beyondDefaultData from "./templateData/beyondDefaultData.js";
 import sohalaDefaultData from "./templateData/sohalaDefaultData.js";
 
 dotenv.config();
@@ -32,6 +34,16 @@ const seedTemplates = async () => {
         previewImage: "/assets/preview-images/hitched.webp",
         componentKey: "hitched",
         defaultData: hitchedDefaultData,
+      },
+      {
+        title: "Aura",
+        slug: "aura",
+        indprice: 2999,
+        usaprice: 39,
+        category: "Hindu Weddings",
+        previewImage: "/assets/preview-images/aura.png",
+        componentKey: "aura",
+        defaultData: auraDefaultData,
       },
       {
         title: "Sohala",
@@ -102,6 +114,17 @@ const seedTemplates = async () => {
         previewImage: "/assets/preview-images/vows.webp",
         componentKey: "vows",
         defaultData: vowsDefaultData,
+      },
+
+       {
+        title: "Beyond",
+        slug: "beyond",
+        indprice: 3339,
+        usaprice: 59,
+        category: "Christian Weddings",
+        previewImage: "/assets/preview-images/beyond.webp",
+        componentKey: "beyond",
+        defaultData: beyondDefaultData,
       },
     ];
 
